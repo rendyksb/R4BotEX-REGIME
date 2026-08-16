@@ -547,6 +547,375 @@
       font-size: 11px;
     }
 
+
+    /* PERFORMANCE SLIDER */
+    .performance-slider {
+      position: relative;
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid rgba(65,182,255,.28);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(30,144,255,.08), transparent 48%),
+        linear-gradient(145deg, rgba(8,20,31,.96), rgba(4,11,18,.98));
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.36),
+        0 0 42px rgba(30,144,255,.06);
+      overflow: hidden;
+    }
+
+    .performance-slider-viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+
+    .performance-slider-track {
+      display: flex;
+      width: 100%;
+      transition: transform .65s cubic-bezier(.22,.61,.36,1);
+      will-change: transform;
+    }
+
+    .performance-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      padding: 34px 70px 26px;
+    }
+
+    .performance-slide-link {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: #07111a;
+      box-shadow:
+        0 16px 42px rgba(0,0,0,.40),
+        0 0 30px rgba(30,144,255,.06);
+      isolation: isolate;
+    }
+
+    .performance-slide-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          180deg,
+          transparent 55%,
+          rgba(3,7,11,.12) 72%,
+          rgba(3,7,11,.82) 100%
+        );
+    }
+
+    .performance-slide-link::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      z-index: 3;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          120deg,
+          transparent 42%,
+          rgba(255,255,255,.14) 49%,
+          rgba(65,182,255,.14) 51%,
+          transparent 58%
+        );
+      transform: translateX(-65%);
+      transition: transform .75s ease;
+    }
+
+    .performance-slide-link:hover::after {
+      transform: translateX(65%);
+    }
+
+    .performance-slide-link img {
+      width: 100%;
+      aspect-ratio: 16 / 8.3;
+      object-fit: contain;
+      background: #fff;
+      transition: transform .45s ease, filter .45s ease;
+    }
+
+    .performance-slide-link:hover img {
+      transform: scale(1.015);
+      filter: brightness(1.03) contrast(1.02);
+    }
+
+    .performance-slide-overlay {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 20px;
+      z-index: 4;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 18px;
+      pointer-events: none;
+    }
+
+    .performance-slide-copy {
+      max-width: 720px;
+    }
+
+    .performance-year {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 7px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(65,182,255,.28);
+      background: rgba(3,12,20,.72);
+      color: var(--blue-light);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      backdrop-filter: blur(8px);
+    }
+
+    .performance-slide-title {
+      color: #fff;
+      font-size: clamp(17px, 2.3vw, 24px);
+      font-weight: 800;
+      line-height: 1.25;
+      text-shadow: 0 2px 14px rgba(0,0,0,.75);
+    }
+
+    .performance-slide-subtitle {
+      margin-top: 5px;
+      color: #c8d3dc;
+      font-size: 12px;
+      line-height: 1.55;
+      text-shadow: 0 2px 10px rgba(0,0,0,.8);
+    }
+
+    .performance-open-badge {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 118px;
+      min-height: 39px;
+      padding: 8px 13px;
+      border-radius: 10px;
+      border: 1px solid rgba(65,182,255,.35);
+      background: rgba(30,144,255,.18);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      backdrop-filter: blur(9px);
+    }
+
+    .performance-slider-button {
+      position: absolute;
+      top: 50%;
+      z-index: 12;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-50%);
+      border: 1px solid rgba(65,182,255,.30);
+      border-radius: 50%;
+      background: rgba(3,12,20,.78);
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      box-shadow: 0 8px 25px rgba(0,0,0,.30);
+      backdrop-filter: blur(10px);
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .performance-slider-button:hover {
+      background: rgba(30,144,255,.22);
+      border-color: rgba(65,182,255,.60);
+      box-shadow: 0 0 22px rgba(30,144,255,.16);
+    }
+
+    .performance-slider-button.prev {
+      left: 13px;
+    }
+
+    .performance-slider-button.next {
+      right: 13px;
+    }
+
+    .performance-slider-button:hover.prev {
+      transform: translateY(-50%) translateX(-2px);
+    }
+
+    .performance-slider-button:hover.next {
+      transform: translateY(-50%) translateX(2px);
+    }
+
+    .performance-slider-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 34px 26px;
+    }
+
+    .performance-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .performance-dot {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.24);
+      cursor: pointer;
+      transition: width .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+
+    .performance-dot.active {
+      width: 30px;
+      background: var(--blue-light);
+      box-shadow: 0 0 14px rgba(65,182,255,.42);
+    }
+
+    .performance-slider-hint {
+      color: var(--muted-2);
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .performance-slider-note {
+      max-width: 780px;
+      margin: 24px auto 0;
+      padding: 11px 15px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.025);
+      color: var(--muted-2);
+      font-size: 11px;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .performance-slide {
+        padding: 25px 52px 20px;
+      }
+
+      .performance-slider-button {
+        width: 40px;
+        height: 40px;
+      }
+
+      .performance-slider-button.prev {
+        left: 7px;
+      }
+
+      .performance-slider-button.next {
+        right: 7px;
+      }
+
+      .performance-slide-overlay {
+        left: 16px;
+        right: 16px;
+        bottom: 13px;
+      }
+
+      .performance-open-badge {
+        min-width: 92px;
+        min-height: 34px;
+        font-size: 10px;
+      }
+
+      .performance-slider-footer {
+        padding: 0 25px 22px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .performance-slide {
+        padding: 16px 16px 16px;
+      }
+
+      .performance-slider-button {
+        width: 38px;
+        height: 38px;
+        top: 45%;
+        background: rgba(3,12,20,.88);
+      }
+
+      .performance-slider-button.prev {
+        left: 8px;
+      }
+
+      .performance-slider-button.next {
+        right: 8px;
+      }
+
+      .performance-slide-link {
+        border-radius: 13px;
+      }
+
+      .performance-slide-link img {
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
+      }
+
+      .performance-slide-overlay {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        display: block;
+        padding: 15px;
+        background: #07111a;
+      }
+
+      .performance-slide-link::before {
+        display: none;
+      }
+
+      .performance-slide-title {
+        font-size: 17px;
+        text-shadow: none;
+      }
+
+      .performance-slide-subtitle {
+        color: var(--muted);
+        text-shadow: none;
+      }
+
+      .performance-open-badge {
+        width: fit-content;
+        margin-top: 12px;
+      }
+
+      .performance-slider-footer {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 16px 18px;
+        gap: 10px;
+      }
+
+      .performance-slider-hint {
+        text-align: center;
+      }
+    }
+
     /* ARTICLE */
     .article-layout {
       display: grid;
@@ -1533,24 +1902,149 @@
 
         <div class="section-heading center">
           <span class="section-label">BUKTI PERFORMA</span>
-          <h2>Backtest, Forward Test & Equity Curve</h2>
+          <h2>Backtest &amp; Equity Curve</h2>
           <p>
-            Tempatkan hasil pengujian aktual Anda di area ini. Sertakan periode,
-            simbol, broker, modal, leverage, spread, dan konfigurasi agar informasi
-            performa tetap transparan.
+            Pilih periode backtest untuk melihat laporan lengkap. Klik gambar
+            untuk membuka halaman detail hasil pengujian masing-masing tahun.
           </p>
         </div>
 
-        <div class="performance-box">
-          <div class="chart-placeholder-icon">↗</div>
-          <h3>Area Gambar Grafik Profit / Backtest</h3>
-          <p>
-            Hapus isi placeholder ini dan ganti dengan screenshot Strategy Tester,
-            balance/equity curve, FXBlue, Myfxbook, atau dokumentasi forward test.
-          </p>
-          <div class="performance-note">
-            Jangan menampilkan hasil historis sebagai jaminan return di masa depan.
+        <!--
+          FILE YANG HARUS BERADA DI FOLDER YANG SAMA DENGAN HTML INI:
+
+          Gambar cover:
+          - 2020/backtest_cover_2020.png
+          - 2021/backtest_cover_2021.png
+
+          Halaman detail:
+          - 2020/Lot 0.1 (target 50-150) Tahun 2020.html
+          - 2021/Lot 0.1 (target 50-150) Tahun 2021.html
+        -->
+        <div
+          class="performance-slider"
+          id="backtestSlider"
+          aria-label="Slider hasil backtest R4BotEX REGIME"
+        >
+
+          <div class="performance-slider-viewport">
+
+            <div class="performance-slider-track">
+
+              <!-- SLIDE 2020 -->
+              <div class="performance-slide">
+                <a
+                  class="performance-slide-link"
+                  href="2020/Lot 0.1 (target 50-150) Tahun 2020.html"
+                  aria-label="Buka laporan lengkap backtest tahun 2020"
+                >
+                  <img
+                    src="2020/backtest_cover_2020.png"
+                    alt="Cover hasil backtest R4BotEX REGIME tahun 2020"
+                    loading="lazy"
+                  >
+
+                  <div class="performance-slide-overlay">
+                    <div class="performance-slide-copy">
+                      <span class="performance-year">BACKTEST 2020</span>
+                      <div class="performance-slide-title">
+                        Lot 0.1 • Target Basket 50-150 • Tahun 2020
+                      </div>
+                      <div class="performance-slide-subtitle">
+                        Klik gambar untuk melihat laporan Strategy Tester dan detail hasil pengujian.
+                      </div>
+                    </div>
+
+                    <span class="performance-open-badge">
+                      Lihat Detail ↗
+                    </span>
+                  </div>
+                </a>
+              </div>
+
+              <!-- SLIDE 2021 -->
+              <div class="performance-slide">
+                <a
+                  class="performance-slide-link"
+                  href="2021/Lot 0.1 (target 50-150) Tahun 2021.html"
+                  aria-label="Buka laporan lengkap backtest tahun 2021"
+                >
+                  <img
+                    src="2021/backtest_cover_2021.png"
+                    alt="Cover hasil backtest R4BotEX REGIME tahun 2021"
+                    loading="lazy"
+                  >
+
+                  <div class="performance-slide-overlay">
+                    <div class="performance-slide-copy">
+                      <span class="performance-year">BACKTEST 2021</span>
+                      <div class="performance-slide-title">
+                        Lot 0.1 • Target Basket 50-150 • Tahun 2021
+                      </div>
+                      <div class="performance-slide-subtitle">
+                        Klik gambar untuk melihat laporan Strategy Tester dan detail hasil pengujian.
+                      </div>
+                    </div>
+
+                    <span class="performance-open-badge">
+                      Lihat Detail ↗
+                    </span>
+                  </div>
+                </a>
+              </div>
+
+            </div>
+
+            <button
+              class="performance-slider-button prev"
+              type="button"
+              aria-label="Backtest sebelumnya"
+            >
+              &#8249;
+            </button>
+
+            <button
+              class="performance-slider-button next"
+              type="button"
+              aria-label="Backtest berikutnya"
+            >
+              &#8250;
+            </button>
+
           </div>
+
+          <div class="performance-slider-footer">
+
+            <div
+              class="performance-dots"
+              aria-label="Pilih slide backtest"
+            >
+              <button
+                class="performance-dot active"
+                type="button"
+                aria-label="Tampilkan backtest 2020"
+                aria-current="true"
+              ></button>
+
+              <button
+                class="performance-dot"
+                type="button"
+                aria-label="Tampilkan backtest 2021"
+                aria-current="false"
+              ></button>
+            </div>
+
+            <div class="performance-slider-hint">
+              Geser / gunakan tombol panah • Klik gambar untuk membuka laporan lengkap
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="performance-slider-note">
+          Hasil backtest atau performa historis tidak menjamin hasil yang sama
+          pada masa mendatang. Performa live dapat dipengaruhi kondisi market,
+          broker, spread, slippage, leverage, konfigurasi, dan faktor lainnya.
         </div>
 
       </div>
@@ -2823,6 +3317,130 @@
 
     </div>
   </footer>
+
+
+  <script>
+    (function () {
+      const slider = document.getElementById("backtestSlider");
+      if (!slider) return;
+
+      const track = slider.querySelector(".performance-slider-track");
+      const slides = Array.from(slider.querySelectorAll(".performance-slide"));
+      const prevButton = slider.querySelector(".performance-slider-button.prev");
+      const nextButton = slider.querySelector(".performance-slider-button.next");
+      const dots = Array.from(slider.querySelectorAll(".performance-dot"));
+
+      let currentIndex = 0;
+      let autoplayTimer = null;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const autoplayDelay = 5000;
+
+      function showSlide(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        track.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
+
+        dots.forEach(function (dot, dotIndex) {
+          const isActive = dotIndex === currentIndex;
+          dot.classList.toggle("active", isActive);
+          dot.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(nextSlide, autoplayDelay);
+      }
+
+      prevButton.addEventListener("click", function () {
+        prevSlide();
+        startAutoplay();
+      });
+
+      nextButton.addEventListener("click", function () {
+        nextSlide();
+        startAutoplay();
+      });
+
+      dots.forEach(function (dot, index) {
+        dot.addEventListener("click", function () {
+          showSlide(index);
+          startAutoplay();
+        });
+      });
+
+      slider.addEventListener("mouseenter", stopAutoplay);
+      slider.addEventListener("mouseleave", startAutoplay);
+
+      slider.addEventListener(
+        "touchstart",
+        function (event) {
+          touchStartX = event.changedTouches[0].screenX;
+          stopAutoplay();
+        },
+        { passive: true }
+      );
+
+      slider.addEventListener(
+        "touchend",
+        function (event) {
+          touchEndX = event.changedTouches[0].screenX;
+          const distance = touchEndX - touchStartX;
+
+          if (Math.abs(distance) > 45) {
+            if (distance < 0) {
+              nextSlide();
+            } else {
+              prevSlide();
+            }
+          }
+
+          startAutoplay();
+        },
+        { passive: true }
+      );
+
+      slider.setAttribute("tabindex", "0");
+
+      slider.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft") {
+          prevSlide();
+          startAutoplay();
+        }
+
+        if (event.key === "ArrowRight") {
+          nextSlide();
+          startAutoplay();
+        }
+      });
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
+
+      showSlide(0);
+      startAutoplay();
+    })();
+  </script>
 
 </body>
 </html>
