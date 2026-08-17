@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Member | R4BotEX REGIME</title>
+  <meta name="description" content="Daftar akun member R4BotEX REGIME untuk mengakses layanan dan sistem lisensi EA MetaTrader 5.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#03070b">
+
+  <style>
+    :root {
+      --bg: #03070b;
+      --panel: #09131d;
+      --blue: #1e90ff;
+      --blue-light: #49b8ff;
+      --green: #00ff9d;
+      --red: #ff6b6b;
+      --text: #f7f9fb;
+      --muted: #9eabb7;
+      --border: rgba(255,255,255,.09);
+      --border-blue: rgba(30,144,255,.34);
+      --shadow: 0 24px 70px rgba(0,0,0,.48);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: dark; }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 80% 12%, rgba(30,144,255,.14), transparent 28%),
+        radial-gradient(circle at 15% 75%, rgba(0,217,255,.06), transparent 24%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .header {
+      width: min(92%, 1120px);
+      margin: 0 auto;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 14px rgba(30,144,255,.28));
+    }
+
+    .brand-title {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: .4px;
+    }
+
+    .brand-title span { color: var(--blue-light); }
+
+    .brand-subtitle {
+      margin-top: 2px;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 2.6px;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .back-link:hover { color: var(--blue-light); }
+
+    .main {
+      width: min(92%, 1120px);
+      margin: 0 auto;
+      padding: 60px 0 90px;
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(380px, .7fr);
+      align-items: center;
+      gap: 70px;
+    }
+
+    .intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-blue);
+      background: rgba(30,144,255,.07);
+      color: var(--blue-light);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .intro-badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px rgba(0,255,157,.7);
+    }
+
+    h1 {
+      max-width: 650px;
+      font-size: clamp(40px, 5vw, 65px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .gradient {
+      color: transparent;
+      background: linear-gradient(90deg, #fff, #75ccff 55%, #1e90ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .intro p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .security-list {
+      margin-top: 30px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .security-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c6d0d9;
+      font-size: 13px;
+    }
+
+    .security-icon {
+      width: 23px;
+      height: 23px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(0,255,157,.25);
+      color: var(--green);
+      font-size: 11px;
+    }
+
+    .register-card {
+      position: relative;
+      padding: 34px;
+      border-radius: 22px;
+      border: 1px solid rgba(65,182,255,.20);
+      background: linear-gradient(145deg, rgba(13,26,37,.95), rgba(6,13,20,.96));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .register-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -80px;
+      top: -80px;
+      background: rgba(30,144,255,.16);
+      filter: blur(55px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .card-head {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 26px;
+    }
+
+    .card-head h2 { font-size: 27px; margin-bottom: 7px; }
+    .card-head p { color: var(--muted); font-size: 13px; }
+
+    .form-group {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #d9e2e9;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    input {
+      width: 100%;
+      height: 50px;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: rgba(2,8,13,.72);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    input::placeholder { color: #61707d; }
+
+    input:focus {
+      border-color: rgba(65,182,255,.60);
+      box-shadow: 0 0 0 3px rgba(30,144,255,.08);
+    }
+
+    .password-help {
+      margin-top: 7px;
+      color: #697785;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .submit-btn {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 52px;
+      margin-top: 6px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 11px;
+      background: linear-gradient(135deg, #1e90ff, #0068d8);
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(30,144,255,.22);
+      transition: .2s ease;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 15px 38px rgba(30,144,255,.30);
+    }
+
+    .submit-btn:disabled {
+      cursor: not-allowed;
+      opacity: .65;
+    }
+
+    #registerMessage {
+      position: relative;
+      z-index: 2;
+      min-height: 20px;
+      margin-top: 15px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .form-footer {
+      position: relative;
+      z-index: 2;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .form-footer a {
+      color: var(--blue-light);
+      font-weight: 800;
+    }
+
+    .legal-note {
+      position: relative;
+      z-index: 2;
+      margin-top: 17px;
+      color: #667582;
+      font-size: 10px;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .footer {
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      color: #667582;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    @media (max-width: 850px) {
+      .main {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        padding-top: 42px;
+      }
+      .intro { text-align: center; }
+      .intro-badge { margin-inline: auto; }
+      .intro p { margin-inline: auto; }
+      .security-list {
+        max-width: 420px;
+        margin-inline: auto;
+        margin-top: 28px;
+        text-align: left;
+      }
+      .register-card {
+        max-width: 540px;
+        width: 100%;
+        margin-inline: auto;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header { min-height: 68px; }
+      .brand img { width: 42px; height: 42px; }
+      .brand-title { font-size: 15px; }
+      .back-link { font-size: 11px; }
+      .main { padding: 32px 0 65px; }
+      h1 { font-size: 40px; }
+      .register-card {
+        padding: 26px 20px;
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="header">
+      <a class="brand" href="/">
+        <img src="R4BotEX_REGIME_Logo.png" alt="Logo R4BotEX REGIME" width="48" height="48">
+        <div>
+          <div class="brand-title">R4Bot<span>EX</span></div>
+          <div class="brand-subtitle">REGIME MEMBER</div>
+        </div>
+      </a>
+
+      <a class="back-link" href="/">← Kembali ke Website</a>
+    </header>
+
+    <main class="main">
+
+      <section class="intro">
+        <div class="intro-badge">MEMBER REGISTRATION</div>
+
+        <h1>
+          Buat Akun
+          <span class="gradient">R4BotEX REGIME</span>
+        </h1>
+
+        <p>
+          Daftarkan akun member Anda untuk menggunakan layanan member,
+          pengelolaan lisensi, dan fitur R4BotEX REGIME yang tersedia
+          pada sistem website.
+        </p>
+
+        <div class="security-list">
+          <div class="security-item">
+            <span class="security-icon">✓</span>
+            Password tidak disimpan dalam bentuk teks asli.
+          </div>
+
+          <div class="security-item">
+            <span class="security-icon">✓</span>
+            Email hanya dapat digunakan untuk satu akun.
+          </div>
+
+          <div class="security-item">
+            <span class="security-icon">✓</span>
+            Data registrasi dikirim melalui endpoint API website.
+          </div>
+        </div>
+      </section>
+
+      <section class="register-card">
+        <div class="card-head">
+          <h2>Daftar Member</h2>
+          <p>Lengkapi data berikut untuk membuat akun.</p>
+        </div>
+
+        <form id="registerForm" autocomplete="on">
+
+          <div class="form-group">
+            <label for="name">Nama Lengkap</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              autocomplete="name"
+              maxlength="100"
+              placeholder="Contoh: Budi Santoso"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              maxlength="254"
+              placeholder="nama@email.com"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="new-password"
+              minlength="10"
+              maxlength="128"
+              placeholder="Minimal 10 karakter"
+              required
+            >
+            <div class="password-help">
+              Minimal 10 karakter dan harus mengandung huruf serta angka.
+            </div>
+          </div>
+
+          <button class="submit-btn" type="submit" id="registerButton">
+            Buat Akun Member
+          </button>
+
+          <div id="registerMessage" role="status" aria-live="polite"></div>
+        </form>
+
+        <div class="form-footer">
+          Sudah memiliki akun?
+          <a href="/login.html">Login di sini</a>
+        </div>
+
+        <div class="legal-note">
+          Dengan membuat akun, Anda memahami bahwa layanan EA dan trading
+          tidak memberikan jaminan keuntungan dan tetap memiliki risiko.
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      © 2026 KOI Signal Basic • R4BotEX REGIME
+    </footer>
+  </div>
+
+  <script>
+    async function handleRegister(event) {
+      event.preventDefault();
+
+      const form = document.getElementById("registerForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      const submitButton = document.getElementById("registerButton");
+      const messageBox = document.getElementById("registerMessage");
+
+      function showMessage(text, type = "info") {
+        messageBox.textContent = text;
+
+        if (type === "success") {
+          messageBox.style.color = "#00ff9d";
+        } else if (type === "error") {
+          messageBox.style.color = "#ff6b6b";
+        } else {
+          messageBox.style.color = "#8ecbff";
+        }
+      }
+
+      const payload = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        password: passwordInput.value
+      };
+
+      if (!payload.name || !payload.email || !payload.password) {
+        showMessage("Nama, email, dan password wajib diisi.", "error");
+        return;
+      }
+
+      if (payload.password.length < 10) {
+        showMessage("Password minimal 10 karakter.", "error");
+        return;
+      }
+
+      if (!/[A-Za-z]/.test(payload.password) || !/[0-9]/.test(payload.password)) {
+        showMessage("Password minimal harus mengandung huruf dan angka.", "error");
+        return;
+      }
+
+      try {
+        submitButton.disabled = true;
+        submitButton.textContent = "Memproses...";
+        showMessage("Sedang membuat akun...", "info");
+
+        const response = await fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        let result;
+
+        try {
+          result = await response.json();
+        } catch {
+          throw new Error("Respons server tidak valid.");
+        }
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.message || "Registrasi gagal.");
+        }
+
+        showMessage(
+          "Registrasi berhasil. Akun member Anda sudah dibuat.",
+          "success"
+        );
+
+        form.reset();
+
+        /*
+        OPTIONAL:
+        Setelah login.html sudah dibuat, aktifkan redirect:
+
+        setTimeout(() => {
+          window.location.href = "/login.html";
+        }, 1500);
+        */
+
+      } catch (error) {
+        showMessage(
+          error.message || "Tidak dapat terhubung ke server.",
+          "error"
+        );
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Buat Akun Member";
+      }
+    }
+
+    document
+      .getElementById("registerForm")
+      .addEventListener("submit", handleRegister);
+  </script>
+</body>
+</html>
