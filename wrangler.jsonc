@@ -1,0 +1,10 @@
+{
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "r4botex-members",
+      "database_id": "dfc5f80c-d369-4397-a2f7-38d4f5ace5b8",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
